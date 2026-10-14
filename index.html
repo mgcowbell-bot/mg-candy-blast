@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0b1f4d">
+<meta name="mobile-web-app-capable" content="yes">
+<title>MG Candy Blast</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>window.__mgErr=function(m){var d=document.getElementById('mgerr');if(!d){d=document.createElement('div');d.id='mgerr';d.style.cssText='position:fixed;left:0;right:0;top:0;z-index:999;background:#b00020;color:#fff;font:14px sans-serif;padding:10px;white-space:pre-wrap';document.body.appendChild(d);}d.textContent+=m+'\n';};window.__mgFail=function(msg){var l=document.getElementById('loading');if(!l)return;if(l.className.indexOf('err')<0)l.className+=' err';var s=l.querySelector('.lerr span');if(s)s.textContent=msg;};
+window.onerror=function(m,s,l){window.__mgErr('Error: '+m+' ('+(s||'').split('/').pop()+':'+l+')');if(!window.__mgReady)window.__mgFail('Start-up error: '+m+'.');};
+setTimeout(function(){if(!window.__mgReady)window.__mgFail('The game is taking too long to start. Check that all game files are present, then tap Retry.');},9000);</script>
+<div id="app">
+  <section id="title" class="screen"></section>
+  <section id="map" class="screen"></section>
+  <section id="game" class="screen"></section>
+  <div id="modals"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="devBadge">TEST MODE</div>
+  <div id="loading"><div class="lbg"></div><div class="llogo"><img src="assets/images/home.jpg" alt="MG Candy Blast" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lfallback" style="display:none"><b>MG</b><span>Candy</span><span class="bl">Blast</span></div></div><div class="lwrap"><div class="lcandy"></div><div class="lbar"><i></i></div><div class="ltxt">Preparing Your Candy Adventure...</div><div class="lerr"><span></span><button class="btn blue sm" id="lretry" onclick="location.reload()">Retry</button></div></div></div>
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="msgs" aria-live="polite"></div>
+<noscript>MG Candy Blast needs JavaScript.</noscript>
+<script src="storage.js"></script>
+<script src="engine.js"></script>
+<script src="level-tuning.js"></script>
+<script src="levels.js"></script>
+<script src="audio.js"></script>
+<script src="effects.js"></script>
+<script src="art.js"></script>
+<script src="game.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "mg-candy-blast",
+  "version": "2.0.0",
+  "description": "MG Candy Blast - an HTML5 match-3 candy puzzle game with 1,000+ levels (MGCowbell / MGTECH).",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "test": "node tests/engine.test.js && node tests/obstacles.test.js && node tools/validate-levels.js 1 1000 4",
+    "test:browser": "python3 tests/browser/rules_and_obstacles.py && python3 tests/browser/obstacles_boosters_worlds.py && python3 tests/browser/audit_regressions.py",
+    "validate:levels": "node tools/validate-levels.js 1 1000 8 reports/last-run.json",
+    "calibrate": "node tools/calibrate.js 1 1000 10 5 reports/tune.json",
+    "build:single": "node tools/build-single.js"
+  }
+}
