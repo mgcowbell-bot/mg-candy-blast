@@ -1,0 +1,19 @@
+# Runs the fast checks on every push / pull request.
+name: Checks
+on:
+  push:
+  pull_request:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Syntax check
+        run: for f in *.js tools/*.js tests/*.js; do node --check "$f"; done
+      - name: Engine and obstacle tests
+        run: node tests/engine.test.js && node tests/obstacles.test.js
+      - name: Validate all 1,000 level configurations (basic validation + bot simulation sample)
+        run: node tools/validate-levels.js 1 1000 3

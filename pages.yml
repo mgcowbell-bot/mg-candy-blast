@@ -1,0 +1,34 @@
+# Publishes the game to GitHub Pages every time you push to main.
+# One-time setup: repository Settings -> Pages -> "Build and deployment" -> Source: GitHub Actions.
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect only the files the game needs
+        run: |
+          mkdir _site
+          cp index.html style.css manifest.json service-worker.js storage.js engine.js level-tuning.js levels.js audio.js effects.js art.js game.js ui.js _site/
+          cp -r assets _site/assets
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
